@@ -1,24 +1,14 @@
-import { StyleSheet } from "react-native";
+import PostListItem from "@/src/components/PostListItem";
+import { FlatList } from "react-native";
 
-import { Text, View } from "@/src/components/Themed";
-
+import posts from "../../../assets/data/posts.json";
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-    </View>
+    <FlatList
+      contentContainerStyle={{ gap: 10 }}
+      showsVerticalScrollIndicator={false}
+      data={posts}
+      renderItem={({ item }) => <PostListItem post={item} />}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
- 
-});
