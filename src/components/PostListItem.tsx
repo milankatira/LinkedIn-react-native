@@ -24,16 +24,20 @@ const PostListItem = ({ post }: PostListItemProps) => {
     <Link href={`/posts/${post.id}`} asChild>
       <Pressable style={styles.container}>
         <View style={styles.container}>
-          <View style={styles.header}>
-            <Image
-              source={{ uri: post.author.image }}
-              style={styles.userImage}
-            />
-            <View>
-              <Text style={styles.userName}>{post.author.name}</Text>
-              <Text style={styles.position}>{post.author.position}</Text>
-            </View>
-          </View>
+          <Link href={`/users/${post.author.id}`} asChild>
+            <Pressable>
+              <View style={styles.header}>
+                <Image
+                  source={{ uri: post.author.image }}
+                  style={styles.userImage}
+                />
+                <View>
+                  <Text style={styles.userName}>{post.author.name}</Text>
+                  <Text style={styles.position}>{post.author.position}</Text>
+                </View>
+              </View>
+            </Pressable>
+          </Link>
 
           <Text style={styles.content}>{post.content}</Text>
           {post.image && (
